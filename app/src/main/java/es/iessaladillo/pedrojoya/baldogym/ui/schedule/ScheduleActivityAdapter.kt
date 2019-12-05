@@ -1,5 +1,6 @@
 package es.iessaladillo.pedrojoya.baldogym.ui.schedule
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,14 +66,22 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
         }
 
         fun bind(trainingSession: TrainingSession) {
-            lblDay.text = trainingSession.weekDay.name
             lblRoom.text = trainingSession.room
             lblParticipants.text = trainingSession.participants.toString()
             lblSport.text = trainingSession.name
-            lblDescription.text = trainingSession.description
             imgSport.setImageResource(trainingSession.photoResId)
             lblTrainer.text = trainingSession.trainer
             lblTime.text = trainingSession.time
+
+            if (trainingSession.userJoined){
+                btnSession.setBackgroundResource(R.drawable.schedule_btn_quit_background)
+                btnSession.setText(R.string.schedule_item_quit)
+                btnSession.setTextColor(Color.WHITE)
+            }else{
+                btnSession.setBackgroundResource(R.drawable.schedule_btn_join_background)
+                btnSession.setText(R.string.schedule_item_join)
+                btnSession.setTextColor(Color.BLACK)
+            }
         }
     }
 

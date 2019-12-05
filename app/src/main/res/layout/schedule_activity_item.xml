@@ -23,7 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="lblSport"
-        app:layout_constraintStart_toEndOf="@+id/imgSession"
+        app:layout_constraintStart_toEndOf="@+id/imgSport"
         app:layout_constraintTop_toBottomOf="@+id/lblTime" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="lblTrainer"
-        app:layout_constraintStart_toEndOf="@+id/imgSession"
+        app:layout_constraintStart_toEndOf="@+id/imgSport"
         app:layout_constraintTop_toBottomOf="@+id/lblSport" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="lblRoom"
-        app:layout_constraintStart_toEndOf="@+id/imgSession"
+        app:layout_constraintStart_toEndOf="@+id/imgSport"
         app:layout_constraintTop_toBottomOf="@+id/lblTrainer" />
 
     <Button

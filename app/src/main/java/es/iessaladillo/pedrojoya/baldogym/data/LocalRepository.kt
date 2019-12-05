@@ -90,25 +90,36 @@ object LocalRepository : Repository {
     }
 
     @Suppress("ObjectPropertyName")
-    private val _trainingSessions = createWeekSchedule() as MutableList<TrainingSession>
-    private val trainingSessions:List<TrainingSession>
-        get() = _trainingSessions
+    private val trainingSessions = createWeekSchedule() as MutableList<TrainingSession>
 
     override fun queryTrainingSessions(weekDay: WeekDay):List<TrainingSession> {
-        return trainingSessions.filter { it.weekDay == weekDay }
+        return trainingSessions.filter { it.weekDay.name == weekDay.name }
     }
 
     override fun changeJoinState(trainingSession: TrainingSession) {
-        _trainingSessions[_trainingSessions.indexOf(trainingSession)] = TrainingSession(trainingSession.id,
-            trainingSession.name,
-            trainingSession.weekDay,
-            trainingSession.photoResId,
-            trainingSession.description,
-            trainingSession.time,
-            trainingSession.trainer,
-            trainingSession.room,
-            trainingSession.participants,
-            true)
+        if(trainingSession.userJoined){
+            this.trainingSessions[this.trainingSessions.indexOf(trainingSession)] = TrainingSession(trainingSession.id,
+                trainingSession.name,
+                trainingSession.weekDay,
+                trainingSession.photoResId,
+                trainingSession.description,
+                trainingSession.time,
+                trainingSession.trainer,
+                trainingSession.room,
+                trainingSession.participants-1,
+                false)
+        }else{
+            this.trainingSessions[this.trainingSessions.indexOf(trainingSession)] = TrainingSession(trainingSession.id,
+                trainingSession.name,
+                trainingSession.weekDay,
+                trainingSession.photoResId,
+                trainingSession.description,
+                trainingSession.time,
+                trainingSession.trainer,
+                trainingSession.room,
+                trainingSession.participants+1,
+                true)
+        }
     }
 
 }

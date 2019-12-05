@@ -15,6 +15,7 @@ import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
+import es.iessaladillo.pedrojoya.baldogym.data.entity.getCurrentWeekDay
 import es.iessaladillo.pedrojoya.baldogym.ui.trainingsession.TrainingSessionActivity
 import kotlinx.android.synthetic.main.schedule_activity.*
 
@@ -40,6 +41,24 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
 
     private fun setupViews() {
         setupReciclerView()
+        setupDayClickListeners()
+        setBold(getCurrentWeekDay())
+        lblDay.text = viewmodel.currentWeekDay.value!!.name
+    }
+
+    private fun setupDayClickListeners() {
+        lblMonday.setOnClickListener { changeDaySelected(WeekDay.MONDAY) }
+        lblTuesday.setOnClickListener { changeDaySelected(WeekDay.TUESDAY) }
+        lblWednesday.setOnClickListener { changeDaySelected(WeekDay.WEDNESDAY) }
+        lblThursday.setOnClickListener { changeDaySelected(WeekDay.THURSDAY) }
+        lblFriday.setOnClickListener { changeDaySelected(WeekDay.FRIDAY) }
+        lblSaturday.setOnClickListener { changeDaySelected(WeekDay.SATURDAY) }
+        lblSunday.setOnClickListener { changeDaySelected(WeekDay.SUNDAY) }
+    }
+
+    private fun changeDaySelected(weekDay: WeekDay) {
+        setBold(weekDay)
+        viewmodel.changeDay(weekDay)
     }
 
     private fun setupReciclerView() {
@@ -61,6 +80,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         viewmodel.trainingSessions.observe(this) {
             if (it.isNotEmpty()) lblEmptyView.visibility = View.INVISIBLE
             else lblEmptyView.visibility = View.VISIBLE
+            listAdapter.submitList(viewmodel.trainingSessions.value!!)
         }
         viewmodel.currentWeekDay.observe(this) {
             lblDay.text = it.name
@@ -88,16 +108,19 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         }
     }
 
+    //Accion cuando hace click en el objeto TrainingSession
     override fun ontItemClick(adapterPosition: Int) {
         showSession(listAdapter.getItem(adapterPosition))
     }
 
+    //Abre intent con la sesion presionada
     private fun showSession(item: TrainingSession) {
         val newintent = Intent(this, TrainingSessionActivity::class.java)
             .putExtra(TRAINING_SESSION, item.id)
         startActivity(newintent)
     }
 
+    //Accion cuando presiona el boton "JOIN" o "QUIT"
     override fun onJoinClick(adapterPosition: Int) {
         viewmodel.changeJoinState(listAdapter.getItem(adapterPosition))
     }
