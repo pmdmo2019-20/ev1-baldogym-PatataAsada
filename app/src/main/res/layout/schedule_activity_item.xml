@@ -21,9 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="lblSport"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
         app:layout_constraintTop_toBottomOf="@+id/lblTime" />
 
     <TextView
@@ -31,9 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="lblTrainer"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
         app:layout_constraintTop_toBottomOf="@+id/lblSport" />
 
     <TextView
@@ -41,9 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="lblRoom"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imgSession"
         app:layout_constraintTop_toBottomOf="@+id/lblTrainer" />
 
     <Button
@@ -51,28 +49,29 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/schedule_btn_join_background"
         android:text="@string/schedule_item_join"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTime" />
 
     <TextView
-        android:id="@+id/lblPeopleIn"
+        android:id="@+id/lblParticipants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/btnSession"
         app:layout_constraintStart_toStartOf="@+id/btnSession"
         app:layout_constraintTop_toBottomOf="@+id/btnSession" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="140dp"
-        android:layout_height="91dp"
+        android:id="@+id/imgSport"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@+id/lblTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTime"
