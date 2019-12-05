@@ -22,7 +22,8 @@ import kotlinx.android.synthetic.main.schedule_activity.*
 class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClickListener,
     ScheduleActivityAdapter.OnJoinClickListener {
 
-    val TRAINING_SESSION: String = "TRAINING_SESSION"
+    @Suppress("PrivatePropertyName")
+    private val TRAINING_SESSION: String = "TRAINING_SESSION"
 
     private val viewmodel: ScheduleActivityViewmodel by viewModels {
         ScheduleActivityViewmodelFactory(LocalRepository)
@@ -40,14 +41,16 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         setupViews(savedInstanceState)
     }
 
+    //Setea las vistas y el viewmodel
     private fun setupViews(savedInstanceState: Bundle?) {
-        if(savedInstanceState == null) viewmodel.changeDay(getCurrentWeekDay())
+        if (savedInstanceState == null) viewmodel.changeDay(getCurrentWeekDay())
         setupReciclerView()
         setupDayClickListeners()
         setBold(viewmodel.currentWeekDay.value!!)
         lblDay.text = viewmodel.currentWeekDay.value!!.name
     }
 
+    //Listeners para los dias de la semana.
     private fun setupDayClickListeners() {
         lblMonday.setOnClickListener { changeDaySelected(WeekDay.MONDAY) }
         lblTuesday.setOnClickListener { changeDaySelected(WeekDay.TUESDAY) }
@@ -58,11 +61,13 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         lblSunday.setOnClickListener { changeDaySelected(WeekDay.SUNDAY) }
     }
 
+    //Cambia el dia seleccionado
     private fun changeDaySelected(weekDay: WeekDay) {
         setBold(weekDay)
         viewmodel.changeDay(weekDay)
     }
 
+    //configura el reciclerview
     private fun setupReciclerView() {
         lstTrainingSessions.run {
             setHasFixedSize(true)

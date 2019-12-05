@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import es.iessaladillo.pedrojoya.baldogym.data.Repository
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 
-class TrainingSessionViewmodel (private val repository: Repository): ViewModel(){
+class TrainingSessionViewmodel(private val repository: Repository) : ViewModel() {
 
     //Sesion seleccionada
     private val _trainingSession: MutableLiveData<TrainingSession> =
@@ -32,7 +32,7 @@ class TrainingSessionViewmodel (private val repository: Repository): ViewModel()
     }
 
     //Cambia la id de la sesion seleccionada
-    fun setSelectedId(id:Long){
+    fun setSelectedId(id: Long) {
         _selectedId.value = id
     }
 

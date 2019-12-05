@@ -28,7 +28,7 @@ class ScheduleActivityViewmodel(private val repository: Repository) : ViewModel(
     }
 
     //Carga la lista de sesiones según el dia en currentWeekDay
-    fun queryTrainingSessions() {
+    private fun queryTrainingSessions() {
         _trainingSessions.value = repository.queryTrainingSessions(currentWeekDay.value!!)
     }
 

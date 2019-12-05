@@ -1,6 +1,5 @@
 package es.iessaladillo.pedrojoya.baldogym.ui.schedule
 
-import android.content.res.Resources
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.schedule_activity.lblDay
 import kotlinx.android.synthetic.main.schedule_activity_item.lblParticipants
 import kotlinx.android.synthetic.main.schedule_activity_item.lblRoom
 import kotlinx.android.synthetic.main.schedule_activity_item.lblSport
@@ -74,11 +72,12 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
             lblTrainer.text = trainingSession.trainer
             lblTime.text = trainingSession.time
 
-            if (trainingSession.userJoined){
+            //configura el boton dependiendo de si el usuario esta unido a la sesion.
+            if (trainingSession.userJoined) {
                 btnSession.setBackgroundResource(R.drawable.schedule_btn_quit_background)
                 btnSession.setText(R.string.schedule_item_quit)
                 btnSession.setTextColor(Color.WHITE)
-            }else{
+            } else {
                 btnSession.setBackgroundResource(R.drawable.schedule_btn_join_background)
                 btnSession.setText(R.string.schedule_item_join)
                 btnSession.setTextColor(Color.BLACK)

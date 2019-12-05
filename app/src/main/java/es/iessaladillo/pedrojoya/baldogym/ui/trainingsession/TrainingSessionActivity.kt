@@ -11,8 +11,9 @@ import kotlinx.android.synthetic.main.training_session_activity.*
 
 class TrainingSessionActivity : AppCompatActivity() {
 
-    val TRAINING_SESSION = "TRAINING_SESSION"
-    private val viewmodel:TrainingSessionViewmodel by viewModels {
+    @Suppress("PrivatePropertyName")
+    private val TRAINING_SESSION = "TRAINING_SESSION"
+    private val viewmodel: TrainingSessionViewmodel by viewModels {
         TrainingSessionViewmodelFactory(LocalRepository)
     }
 
@@ -24,26 +25,29 @@ class TrainingSessionActivity : AppCompatActivity() {
         setupButtons()
     }
 
+    //Configura el boton para unirse/salir de la sesion.
     private fun setupButtons() {
         btnSession.setOnClickListener { viewmodel.changeJoinState(viewmodel.trainingSession.value!!) }
     }
 
+    //Observadores para cambiar los datos segun la sesion seleccionada y si está o no el usuario unido a ella
     private fun setupObservers() {
         viewmodel.trainingSession.observe(this) {
             lblDay.text = it.weekDay.name
             lblDescription.text = it.description
-            lblParticipants.text = getString(R.string.session_participants,it.participants.toString())
+            lblParticipants.text =
+                getString(R.string.session_participants, it.participants.toString())
             lblRoom.text = it.room
             lblSport.text = it.name
             lblTime.text = it.time
             lblTrainer.text = it.trainer
             imgSport.setBackgroundResource(it.photoResId)
 
-            if(it.userJoined){
+            if (it.userJoined) {
                 btnSession.setBackgroundResource(R.drawable.session_btn_quit_background)
                 btnSession.setTextColor(Color.BLACK)
                 btnSession.setText(R.string.schedule_item_quit)
-            }else{
+            } else {
                 btnSession.setBackgroundResource(R.drawable.session_btn_join_background)
                 btnSession.setTextColor(Color.WHITE)
                 btnSession.setText(R.string.schedule_item_join)
@@ -54,12 +58,13 @@ class TrainingSessionActivity : AppCompatActivity() {
         }
     }
 
+    //Captura el intent y configura el viewmodel.
     private fun catchTrainingSession(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             if (intent == null || !intent.hasExtra(TRAINING_SESSION)) {
                 throw RuntimeException("No llega el intent")
             }
-            viewmodel.setSelectedId(intent.getLongExtra(TRAINING_SESSION,0))
+            viewmodel.setSelectedId(intent.getLongExtra(TRAINING_SESSION, 0))
         }
     }
 
