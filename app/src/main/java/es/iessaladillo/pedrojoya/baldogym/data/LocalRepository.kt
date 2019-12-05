@@ -96,6 +96,10 @@ object LocalRepository : Repository {
         return trainingSessions.filter { it.weekDay.name == weekDay.name }
     }
 
+    override fun queryTrainingSession(id: Long): TrainingSession? {
+        return trainingSessions.find { it.id == id }
+    }
+
     override fun changeJoinState(trainingSession: TrainingSession) {
         if(trainingSession.userJoined){
             this.trainingSessions[this.trainingSessions.indexOf(trainingSession)] = TrainingSession(trainingSession.id,

@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         android:text="lblSport"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSession" />
+        app:layout_constraintTop_toBottomOf="@+id/imgSport" />
 
     <TextView
         android:id="@+id/lblTrainer"
