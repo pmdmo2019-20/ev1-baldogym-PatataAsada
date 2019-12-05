@@ -37,11 +37,11 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
         super.onCreate(savedInstanceState)
         setContentView(R.layout.schedule_activity)
         setupObservers()
-        setupViews()
+        setupViews(savedInstanceState)
     }
 
-    private fun setupViews() {
-        viewmodel.changeDay(getCurrentWeekDay())
+    private fun setupViews(savedInstanceState: Bundle?) {
+        if(savedInstanceState == null) viewmodel.changeDay(getCurrentWeekDay())
         setupReciclerView()
         setupDayClickListeners()
         setBold(viewmodel.currentWeekDay.value!!)
