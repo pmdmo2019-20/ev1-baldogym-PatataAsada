@@ -23,7 +23,6 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     ScheduleActivityAdapter.OnJoinClickListener {
 
     val TRAINING_SESSION: String = "TRAINING_SESSION"
-    val CHECK_SESSION: Int = 1
 
     private val viewmodel: ScheduleActivityViewmodel by viewModels {
         ScheduleActivityViewmodelFactory(LocalRepository)
@@ -119,20 +118,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     private fun showSession(item: TrainingSession) {
         val newintent = Intent(this, TrainingSessionActivity::class.java)
             .putExtra(TRAINING_SESSION, item.id)
-        startActivityForResult(newintent,CHECK_SESSION)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val defaultValue: Long = -1
-        if (requestCode==CHECK_SESSION){
-            var id = data?.getLongExtra(TRAINING_SESSION,defaultValue)
-            if (id!=defaultValue){
-                val trainingSession = viewmodel.trainingSessions.value!!.find { it.id == id }
-                if(trainingSession!!.userJoined!=data?.getBooleanExtra("JOINED",false))
-                    viewmodel.changeJoinState(trainingSession)
-            }
-        }
+        startActivity(newintent)
     }
 
     //Accion cuando presiona el boton "JOIN" o "QUIT"
