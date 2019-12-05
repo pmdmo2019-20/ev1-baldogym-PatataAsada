@@ -11,6 +11,6 @@ class ScheduleActivityViewmodelFactory(private val repository: Repository) : Vie
         if (modelClass.isAssignableFrom(ScheduleActivityViewmodel::class.java)) {
             return ScheduleActivityViewmodel(repository) as T
         }
-        throw IllegalArgumentException("Must provide TaskActivityViewModel class")
+        throw IllegalArgumentException("Must provide ScheduleActivityViewModel class")
     }
 }

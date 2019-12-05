@@ -7,15 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
-import es.iessaladillo.pedrojoya.baldogym.ui.schedule.ScheduleActivityViewmodel
-import es.iessaladillo.pedrojoya.baldogym.ui.schedule.ScheduleActivityViewmodelFactory
 import kotlinx.android.synthetic.main.training_session_activity.*
 
 class TrainingSessionActivity : AppCompatActivity() {
 
     val TRAINING_SESSION = "TRAINING_SESSION"
-    private val viewmodel:ScheduleActivityViewmodel by viewModels {
-        ScheduleActivityViewmodelFactory(LocalRepository)
+    private val viewmodel:TrainingSessionViewmodel by viewModels {
+        TrainingSessionViewmodelFactory(LocalRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

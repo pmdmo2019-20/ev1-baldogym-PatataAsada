@@ -27,6 +27,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     private val viewmodel: ScheduleActivityViewmodel by viewModels {
         ScheduleActivityViewmodelFactory(LocalRepository)
     }
+
     private val listAdapter: ScheduleActivityAdapter = ScheduleActivityAdapter().also {
         it.setOnItemClickListener(this)
         it.setOnJoinClickListener(this)
@@ -40,9 +41,10 @@ class ScheduleActivity : AppCompatActivity(), ScheduleActivityAdapter.OnItemClic
     }
 
     private fun setupViews() {
+        viewmodel.changeDay(getCurrentWeekDay())
         setupReciclerView()
         setupDayClickListeners()
-        setBold(getCurrentWeekDay())
+        setBold(viewmodel.currentWeekDay.value!!)
         lblDay.text = viewmodel.currentWeekDay.value!!.name
     }
 
