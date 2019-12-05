@@ -34,5 +34,7 @@
     <!-- Sesión -->
     <string name="session_not_found">Training session not found</string>
     <string name="session_imgPhoto">Training session photo</string>
+    <string name="imgDesc">SessionImage</string>
+    <string name="session_participants">\"%1$s participants\"</string>
 
 </resources>

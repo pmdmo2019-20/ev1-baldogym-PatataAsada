@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="lblSport"
+        tools:text="lblSport"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgSport" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        tools:text="lblTrainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblSport" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="lblDay"
+        tools:text="lblDay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTrainer" />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="lblTime"
+        tools:text="lblTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblDay" />
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="lblRoom"
+        tools:text="lblRoom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTime" />
 
@@ -76,23 +76,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="lblDescription"
+        tools:text="lblDescription"
         app:layout_constraintBottom_toTopOf="@+id/lblParticipants"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-    <TextView
-        android:id="@+id/lblParticipants"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/black"
-        android:text="TextView"
-        android:textColor="@color/design_default_color_on_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSession" />
 
     <Button
         android:id="@+id/btnSession"
@@ -115,5 +103,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bodyattack" />
+        app:srcCompat="@drawable/bodyattack"
+        android:contentDescription="@string/imgDesc" />
+
+    <TextView
+        android:id="@+id/lblParticipants"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:textColor="@color/design_default_color_on_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSession"
+        tools:text="Participants" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,9 +59,9 @@
         android:id="@+id/lblParticipants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/btnSession"
-        app:layout_constraintStart_toStartOf="@+id/btnSession"
+        android:layout_marginEnd="8dp"
+        android:text="number"
+        app:layout_constraintEnd_toStartOf="@+id/lblParticipants2"
         app:layout_constraintTop_toBottomOf="@+id/btnSession" />
 
     <ImageView
@@ -77,5 +77,13 @@
         app:layout_constraintTop_toBottomOf="@+id/lblTime"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bodyattack" />
+
+    <TextView
+        android:id="@+id/lblParticipants2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="participants"
+        app:layout_constraintEnd_toEndOf="@+id/btnSession"
+        app:layout_constraintTop_toBottomOf="@+id/btnSession" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@ class TrainingSessionActivity : AppCompatActivity() {
         viewmodel.trainingSession.observe(this) {
             lblDay.text = it.weekDay.name
             lblDescription.text = it.description
-            lblParticipants.text = it.participants.toString()
+            lblParticipants.text = getString(R.string.session_participants,it.participants.toString())
             lblRoom.text = it.room
             lblSport.text = it.name
             lblTime.text = it.time
